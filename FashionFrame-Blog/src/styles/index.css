@@ -6,13 +6,11 @@
   box-sizing: border-box;
 }
 
-body{
+html,
+body {
   font-family: 'Nunito Sans', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: url('../assets/FashionBG.png');
-  background-size: cover;
-  background-position: center;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Optional, to prevent scrolling */
 }
