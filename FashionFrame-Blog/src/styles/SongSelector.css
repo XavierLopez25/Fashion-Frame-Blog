@@ -1,0 +1,49 @@
+.custom-select {
+  width: 200px;
+  font-family: Arial, sans-serif;
+  position: relative;
+  user-select: none;
+}
+
+.selected-option {
+  padding: 10px;
+  background-color: #729094;
+  color: #dee2da;
+  border: 1px solid #6e7975;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.marquee {
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+  animation: marquee 10s linear infinite;
+}
+
+.options-container {
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.option {
+  background-color: #dee2da;
+  padding: 10px;
+  color: #729094;
+  cursor: pointer;
+}
+
+.option:hover {
+  background-color: #6e7975;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
