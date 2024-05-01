@@ -2,13 +2,20 @@ import './styles/App.css'
 import { LoginRegister } from './components/LoginRegister/LoginRegister'
 
 
-function App() {
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage'; // Adjust the import path as necessary
 
+const App = () => {
   return (
-    <>
-      <LoginRegister/>
-    </>
-  )
-}
+    <Router>
+      <Routes>
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/login" element={<LoginRegister />} />
+      </Routes>
+    </Router>
+  );
+};
+
 
 export default App
