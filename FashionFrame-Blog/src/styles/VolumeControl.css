@@ -1,0 +1,94 @@
+.volume-control {
+  padding: 10px;
+  background-color: #dee2da;
+  border: 1px solid #6e7975;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  max-width: 400px;
+  margin-left: 10px;
+}
+
+.window-controls {
+  display: flex;
+  gap: 3px;
+  width: 100%;
+  padding-bottom: 15px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.window-controls button:hover {
+  background-color: #d6b9aa;
+}
+
+.window-controls button {
+  padding: 5px 10px;
+  cursor: pointer;
+  box-sizing: inset -1px -1px #0a0a0a, inset 1px 1px #2e6067, inset -2px -2px grey,
+    inset 2px 2px #dfdfdf;
+  border-radius: 0;
+}
+
+.volume-label {
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
+  gap: 5px;
+  font-size: 20px;
+}
+
+.control-buttons {
+  display: flex;
+  gap: 3px;
+}
+
+.volume-slider {
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 5px;
+  background: #729094;
+  outline: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 8px;
+  height: 20px;
+  border-radius: 0%;
+  background: #d6b9aa;
+  cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 8px;
+  height: 20px;
+  border-radius: 0%;
+  background: #d6b9aa;
+  cursor: pointer;
+}
+
+.volume-display {
+  color: #6e7975;
+  padding-top: 10px;
+}
+
+.volume-icon {
+  font-size: 25px;
+  color: #6e7975;
+}
+
+.minimize-icon {
+  font-size: 15px;
+  color: #6e7975;
+}
+
+.maximize-icon,
+.close-icon,
+.minimize-icon {
+  font-size: 15px;
+  color: #6e7975;
+}
