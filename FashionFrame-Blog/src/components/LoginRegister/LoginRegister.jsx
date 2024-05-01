@@ -1,8 +1,10 @@
 import React from 'react'
 import '../../styles/LoginRegister.css'
-import { FaUser } from 'react-icons/fa'
-import { FaLock } from 'react-icons/fa'
-import { FaEnvelope } from 'react-icons/fa'
+import { FaUser, FaLock, FaEnvelope } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom';
+import Input from '../Input/Input'
+import FormLink from '../FormLink/FormLink'
+import CheckBoxWLabel from '../CheckBoxWLabel/CheckBoxWLabel'
 
 export const LoginRegister = () => {
 
@@ -22,55 +24,23 @@ export const LoginRegister = () => {
         <div className="form-box login">
             <form action="">
                 <h1>Login</h1>
-                <div className="input-box">
-                    <input type="text" placeholder='Username' required/>
-                    <FaUser className='icon'/>
-                </div>
-                <div className="input-box">
-                    <input type="password" placeholder='Password' required/>
-                    <FaLock className='icon'/>
-                </div>
-
-                <div className="remember-forgot">
-                    <label><input type='checkbox'/>Remember me</label>
-                    <a href='#'>Forgot password?</a>
-                </div>
-
+                <Input type="text" placeholder="Username" icon={FaUser} />
+                <Input type="password" placeholder="Password" icon={FaLock} />
+                <CheckBoxWLabel label="Remember me" isChecked />
                 <button type='submit' className='buttonLR'>Login</button>
-
-                <div className='register-link'>
-                    <p>Don't have an account? <a href='#' onClick={registerLink}>Register</a></p>
-                </div>
+                <FormLink message='Don’t have an account?' actionLink='#' actionText='Register' onClick={registerLink} />
             </form>
         </div>
 
         <div className="form-box register">
             <form action="">
                 <h1>Register</h1>
-                <div className="input-box">
-                    <input type="text" placeholder='Username' required/>
-                    <FaUser className='icon'/>
-                </div>
-
-                <div className="input-box">
-                    <input type="email" placeholder='Email' required/>
-                    <FaEnvelope className='icon'/>
-                </div>
-
-                <div className="input-box">
-                    <input type="password" placeholder='Password' required/>
-                    <FaLock className='icon'/>
-                </div>
-
-                <div className="remember-forgot">
-                    <label><input type='checkbox'/>I agree with terms & conditions</label>
-                </div>
-
+                <Input type="text" placeholder="Username" icon={FaUser} />
+                <Input type="email" placeholder="Email" icon={FaEnvelope} />
+                <Input type="password" placeholder="Password" icon={FaLock} />
+                <CheckBoxWLabel label="I agree with terms & conditions" />
                 <button type='submit' className='buttonLR'>Register</button>
-
-                <div className='register-link'>
-                    <p>Already have an account? <a href='#' onClick={loginLink}>Login</a></p>
-                </div>
+                <FormLink message="Already have an account?" actionLink="#" actionText="Login" onClick={loginLink} />
             </form>
         </div>
 
