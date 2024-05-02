@@ -16,7 +16,6 @@
 
 .marquee {
   white-space: nowrap;
-  overflow: hidden;
   display: block;
   animation: marquee 10s linear infinite;
 }
