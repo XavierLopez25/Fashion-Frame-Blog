@@ -1,0 +1,63 @@
+.admin-status {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #6e7975; /* Dark Slate Grey for border */
+  padding: 10px;
+  background-color: #dee2da; /* Off White background */
+  font-family: 'Arial', sans-serif;
+  max-width: 400px;
+  width: 400px;
+  margin-top: 20px;
+  margin-right: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-header,
+.status-body,
+.status-footer {
+  border: 1px solid #729094; /* Slate Blue for inner borders */
+  margin: 8px 0; /* Margin for spacing between sections */
+  padding: 5px; /* Padding inside sections */ /* Capitalize letters */
+}
+
+.status-header {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  border-color: transparent;
+  color: #2e6067; /* Center the title text */
+  font-size: 30px;
+}
+
+.status-body {
+  font-size: 1rem;
+  color: #dee2da; /* Deep Teal for text */
+  text-align: center;
+  background-color: #2e6067;
+  width: fit-content;
+  font-size: 20px;
+  /* Adjust width based on content */
+}
+
+.status-footer {
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align the footer content */
+  color: #dee2da; /* Deep Teal for text */
+  background-color: #2e6067;
+}
+
+.status-time {
+  padding-bottom: 10px;
+  font-size: 18px;
+}
+
+.status-additional {
+  border-top: 2px dashed #dee2da; /* Stylish top border for additional text */
+  padding-top: 10px; /* Padding above the additional text */
+  width: 100%; /* Full width to fit container */
+  text-align: center;
+  font-size: 16px;
+}
