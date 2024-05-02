@@ -1,6 +1,8 @@
 import React from 'react';
 import VolumeControl from '../components/VolumeControl/VolumeControl';
 import MusicPlayer from '../components/MusicPlayer/MusicPlayer';
+import LatestUpdate from '../components/LatestUpdate/LatestUpdate';
+import GifDisplay from '../components/GifDisplay/GifDisplay';
 import { useState } from 'react';
 
 const HomePage = () => {
@@ -12,6 +14,8 @@ const HomePage = () => {
       <p>This is your home page after login.</p>
       <VolumeControl volume={volume} setVolume={setVolume} />
       <MusicPlayer volume={volume} />
+      <LatestUpdate />
+      <GifDisplay />
     </div>
   );
 };
