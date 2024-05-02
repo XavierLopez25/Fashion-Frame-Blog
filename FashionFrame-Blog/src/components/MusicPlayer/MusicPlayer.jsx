@@ -25,7 +25,11 @@ const MusicPlayer = ({ volume }) => {
       url: '../../assets/MP3/Cream Blade, romi - Daydream.mp3',
     },
     { id: 2, name: 'Dawn Wall - Spears', url: '../../assets/MP3/Dawn Wall - Spears.mp3' },
-    { id: 3, name: 'Droptek - Back 2 U', url: '../../assets/MP3/Droptek - Back 2 U.mp3' },
+    {
+      id: 3,
+      name: 'Droptek - Back 2 U',
+      url: '../../assets/MP3/Droptek - Back 2 U.mp3',
+    },
     {
       id: 4,
       name: 'Droptek, Isabel Higuero - Killing Time',
@@ -65,6 +69,10 @@ const MusicPlayer = ({ volume }) => {
   }, [currentSong]);
 
   useEffect(() => {
+    audioRef.current.loop = isLooping;
+  }, [isLooping]);
+
+  useEffect(() => {
     if (isPlaying) {
       audioRef.current.play();
     } else {
@@ -75,6 +83,7 @@ const MusicPlayer = ({ volume }) => {
   const handleSongChange = (song) => {
     setCurrentSong(song.url);
     setCurrentSongName(song.name);
+    setIsPlaying(true);
   };
 
   const togglePlay = () => {
@@ -86,22 +95,33 @@ const MusicPlayer = ({ volume }) => {
   };
 
   const handleNext = () => {
-    if (!isLooping) {
-      const currentIndex = songs.findIndex((song) => song.url === currentSong);
-      const nextIndex = (currentIndex + 1) % songs.length;
-      setCurrentSong(songs[nextIndex].url);
-      handleSongChange(songs[nextIndex]);
-    }
+    const currentIndex = songs.findIndex((song) => {
+      return song.url === currentSong;
+    });
+    const nextIndex = (currentIndex + 1) % songs.length;
+    handleSongChange(songs[nextIndex]);
   };
 
   const handlePrevious = () => {
+    const currentIndex = songs.findIndex((song) => song.url === currentSong);
+    const previousIndex = (currentIndex - 1 + songs.length) % songs.length;
+    handleSongChange(songs[previousIndex]);
+  };
+
+  const onAudioEnded = () => {
     if (!isLooping) {
-      const currentIndex = songs.findIndex((song) => song.url === currentSong);
-      const previousIndex = (currentIndex - 1 + songs.length) % songs.length;
-      setCurrentSong(songs[previousIndex].url);
-      handleSongChange(songs[previousIndex]);
+      handleNext();
     }
   };
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    audio.addEventListener('ended', onAudioEnded);
+
+    return () => {
+      audio.removeEventListener('ended', onAudioEnded);
+    };
+  }, [isLooping, handleNext, currentSong]);
 
   return (
     <div className="music-player">
@@ -147,7 +167,10 @@ const MusicPlayer = ({ volume }) => {
                   <button onClick={handleNext}>
                     <MdFastForward />
                   </button>
-                  <button onClick={toggleLoop} className={isLooping ? 'active-loop' : ''}>
+                  <button
+                    onClick={toggleLoop}
+                    className={`loop-button ${isLooping ? 'active-loop' : ''}`}
+                  >
                     <MdLoop />
                   </button>
                 </div>
