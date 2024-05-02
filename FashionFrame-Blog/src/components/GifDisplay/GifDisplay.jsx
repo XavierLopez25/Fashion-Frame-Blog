@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import '../../styles/GifDisplay.css'; // Make sure to create and import CSS for styling
+import '../../styles/GifDisplay.css';
 
 const GifDisplay = () => {
   const initialImages = [
@@ -26,7 +26,6 @@ const GifDisplay = () => {
   const [images, setImages] = useState(initialImages);
 
   useEffect(() => {
-    // Duplicate the list of images to simulate infinite scrolling
     setImages((images) => [...images, ...images]);
   }, []);
 
@@ -42,18 +41,5 @@ const GifDisplay = () => {
     </div>
   );
 };
-
-{
-  /* <img
-          src="https://media1.tenor.com/m/A8eMkJsv-yIAAAAd/warframe.gif"
-          alt="GIF 1"
-          className="gif"
-        />
-        <img
-          src="https://media1.tenor.com/m/mvECswet7RgAAAAd/warframe-swagger.gif"
-          alt="GIF 2"
-          className="gif"
-        /> */
-}
 
 export default GifDisplay;
