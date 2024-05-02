@@ -1,26 +1,25 @@
 import React, { useState } from 'react';
 import '../../styles/SongSelector.css';
 
-const CustomDropdown = ({ songs }) => {
+const CustomDropdown = ({ songs, selectedSongName, handleSongChange }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedSong, setSelectedSong] = useState('Select a Song');
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
-  const handleSelect = (songName) => {
-    setSelectedSong(songName);
+  const handleSelect = (song) => {
+    handleSongChange(song);
     setIsOpen(false);
   };
 
   return (
     <div className="custom-select">
       <div className="selected-option" onClick={toggleDropdown}>
-        <div className="marquee">{selectedSong}</div>
+        <div className="marquee">{selectedSongName}</div>
       </div>
       {isOpen && (
         <div className="options-container">
           {songs.map((song, index) => (
-            <div key={index} className="option" onClick={() => handleSelect(song.name)}>
+            <div key={index} className="option" onClick={() => handleSelect(song)}>
               {song.name}
             </div>
           ))}
