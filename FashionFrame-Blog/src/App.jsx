@@ -1,10 +1,8 @@
-import './styles/App.css'
-import { LoginRegister } from './components/LoginRegister/LoginRegister'
-
-
+import './styles/App.css';
+import { LoginRegister } from './components/LoginRegister/LoginRegister';
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage'; // Adjust the import path as necessary
+import HomePage from './pages/HomePage';
 
 const App = () => {
   return (
@@ -17,5 +15,4 @@ const App = () => {
   );
 };
 
-
-export default App
+export default App;
