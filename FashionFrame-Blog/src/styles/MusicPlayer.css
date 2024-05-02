@@ -91,9 +91,26 @@
   margin-left: 20px;
 }
 
+.music-image {
+  background-color: silver;
+  border: 2px solid silver;
+  box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf,
+    inset 2px 2px #0a0a0a;
+  display: inline-block;
+  width: 104px;
+  height: 104px;
+}
+
 .music-image img {
   width: 100px;
   height: 100px;
+  display: block;
+  position: relative;
+  bottom: 1px;
+  right: 1px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  box-sizing: border-box;
 }
 
 .mselection-controls {
