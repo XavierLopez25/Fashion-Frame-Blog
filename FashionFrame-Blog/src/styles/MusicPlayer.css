@@ -1,38 +1,119 @@
 .music-player {
   display: flex;
   align-items: center;
-  background-color: #dee2da; /* Off White background */
+  background-color: #dee2da;
   padding: 15px;
-  border: 1px solid #6e7975; /* Dark Slate Grey for border */
+  border: 1px solid #6e7975;
   max-width: 400px;
   margin-left: 10px;
   margin-top: 50px;
 }
 
-.music-image img {
-  width: 100px;
-  height: 100px; /* Adjust size as needed */
+.player-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.volume-controlM {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 15px;
+}
+
+.window-controlsM {
+  display: flex;
+  gap: 3px;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.window-controlsM button {
+  padding: 5px 10px;
+  cursor: pointer;
+  box-sizing: inset -1px -1px #0a0a0a, inset 1px 1px #2e6067, inset -2px -2px grey,
+    inset 2px 2px #dfdfdf;
+  border-radius: 0;
+}
+
+.window-controlsM button:hover {
+  background-color: #d6b9aa;
+}
+
+.volume-labelM {
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
+  gap: 5px;
+  font-size: 20px;
+}
+
+.volume-iconM {
+  font-size: 25px;
+  color: #6e7975;
+}
+
+.control-buttonsM {
+  display: flex;
+  gap: 3px;
+}
+
+.maximize-iconM,
+.close-iconM,
+.minimize-iconM {
+  font-size: 15px;
+  color: #6e7975;
+}
+
+.mp-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
 }
 
 .player-controls {
   display: flex;
-  flex-direction: column;
+  flex-direction: rows;
   align-items: center;
   gap: 10px;
   margin-left: 20px;
 }
 
+.music-image img {
+  width: 100px;
+  height: 100px;
+}
+
+.mselection-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  padding-left: 25px;
+}
+
 .song-selector {
   padding: 5px 10px;
-  background-color: #729094; /* Slate Blue for dropdown */
-  color: #dee2da; /* Off White text color */
+  background-color: #729094;
+  color: #dee2da;
   border: none;
   cursor: pointer;
 }
 
 .controls {
   display: flex;
-  gap: 5px;
+  gap: 13px;
 }
 
 .controls button {
@@ -45,5 +126,15 @@
 }
 
 .controls button:hover {
-  background-color: #d6b9aa; /* Soft Peach for hover state */
+  background-color: #d6b9aa;
+}
+
+.music-image img {
+  width: 100px;
+  height: 100px;
+}
+
+.controls {
+  display: flex;
+  margin-top: 10px;
 }
