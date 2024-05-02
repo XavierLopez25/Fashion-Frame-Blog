@@ -129,6 +129,11 @@
   background-color: #d6b9aa;
 }
 
+.controls .loop-button.active-loop {
+  background-color: #2e6067;
+  color: white;
+}
+
 .music-image img {
   width: 100px;
   height: 100px;
