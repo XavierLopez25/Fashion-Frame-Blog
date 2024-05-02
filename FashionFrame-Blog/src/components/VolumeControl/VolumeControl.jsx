@@ -5,9 +5,7 @@ import { VscChromeMinimize } from 'react-icons/vsc';
 import { VscChromeClose } from 'react-icons/vsc';
 import { LiaVolumeUpSolid } from 'react-icons/lia';
 
-const VolumeControl = () => {
-  const [volume, setVolume] = useState(50);
-
+const VolumeControl = ({ volume, setVolume }) => {
   const handleVolumeChange = (event) => {
     setVolume(event.target.value);
   };
