@@ -1,0 +1,31 @@
+.user-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #dee2da;
+  border: 1px solid #6e7975;
+  color: #2e6067;
+  font-family: Arial, sans-serif;
+  max-width: 400px;
+  margin-right: 10px;
+}
+
+.user-status span {
+  font-size: 1rem;
+  margin-right: 10px;
+}
+
+button {
+  padding: 5px 10px;
+  background-color: #729094;
+  color: #dee2da;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #6e7975;
+}
