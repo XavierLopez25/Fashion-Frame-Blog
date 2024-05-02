@@ -1,6 +1,6 @@
 .custom-select {
   width: 200px;
-  font-family: Arial, sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
   position: relative;
   user-select: none;
 }
@@ -9,7 +9,7 @@
   padding: 10px;
   background-color: #729094;
   color: #dee2da;
-  border: 1px solid #6e7975;
+  border: 1.5px solid #243d34;
   cursor: pointer;
   overflow: hidden;
 }

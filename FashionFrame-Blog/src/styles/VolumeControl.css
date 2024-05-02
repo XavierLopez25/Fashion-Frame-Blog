@@ -19,16 +19,28 @@
   align-items: center;
 }
 
-.window-controls button:hover {
-  background-color: #d6b9aa;
-}
-
 .window-controls button {
   padding: 5px 10px;
   cursor: pointer;
-  box-sizing: inset -1px -1px #0a0a0a, inset 1px 1px #2e6067, inset -2px -2px grey,
-    inset 2px 2px #dfdfdf;
+  background-color: #dee2da;
+  border-width: 2px;
   border-radius: 0;
+  border-style: outset;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  color: black;
+  font-family: 'MS Sans Serif', Geneva, sans-serif;
+  text-align: center;
+  transition: filter 0.1s ease;
+}
+
+.window-controls button:hover {
+  background-color: #b8b8b8;
+}
+
+.window-controls button:active {
+  border-style: inset;
+  background-color: #a3a3a3;
+  border-color: #808080 #ffffff #ffffff #808080;
 }
 
 .volume-label {

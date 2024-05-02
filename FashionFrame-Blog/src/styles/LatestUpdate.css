@@ -1,14 +1,14 @@
 .latest-update {
-  border: 1px solid #6e7975; /* Dark Slate Grey for border */
-  background-color: #dee2da; /* Off White background */
+  border: 1px solid #6e7975;
+  background-color: #dee2da;
   padding: 20px;
-  margin: 10px;
+  margin-left: 10px;
   max-width: 400px;
   margin-top: 20px;
 }
 
 .latest-update h2 {
-  color: #2e6067; /* Deep Teal */
+  color: #2e6067;
   text-align: center;
 }
 

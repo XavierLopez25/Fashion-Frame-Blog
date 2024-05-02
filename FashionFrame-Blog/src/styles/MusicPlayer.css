@@ -42,13 +42,30 @@
 .window-controlsM button {
   padding: 5px 10px;
   cursor: pointer;
-  box-sizing: inset -1px -1px #0a0a0a, inset 1px 1px #2e6067, inset -2px -2px grey,
-    inset 2px 2px #dfdfdf;
+  background-color: #dee2da;
+  border-width: 2px;
   border-radius: 0;
+  border-style: outset;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  color: black;
+  font-family: 'MS Sans Serif', Geneva, sans-serif;
+  text-align: center;
+  transition: filter 0.1s ease;
 }
 
 .window-controlsM button:hover {
-  background-color: #d6b9aa;
+  background-color: #b8b8b8;
+}
+
+.window-controlsM button:active {
+  border-style: inset;
+  background-color: #a3a3a3;
+  border-color: #808080 #ffffff #ffffff #808080;
+}
+
+.control-buttonsM {
+  display: flex;
+  gap: 3px;
 }
 
 .volume-labelM {
@@ -136,18 +153,29 @@
 .controls button {
   padding: 5px 10px;
   cursor: pointer;
-  box-sizing: inset -1px -1px #0a0a0a, inset 1px 1px #2e6067, inset -2px -2px grey,
-    inset 2px 2px #dfdfdf;
+  background-color: #dee2da;
+  border-width: 2px;
   border-radius: 0;
-  font-size: 16px;
+  border-style: outset;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  color: black;
+  font-family: 'MS Sans Serif', Geneva, sans-serif;
+  text-align: center;
+  transition: filter 0.1s ease;
 }
 
 .controls button:hover {
-  background-color: #d6b9aa;
+  background-color: #b8b8b8;
+}
+
+.controls button:active {
+  border-style: inset;
+  background-color: #a3a3a3;
+  border-color: #808080 #ffffff #ffffff #808080;
 }
 
 .controls .loop-button.active-loop {
-  background-color: #2e6067;
+  background-color: #8aa7aa;
   color: white;
 }
 
