@@ -1,0 +1,43 @@
+.main-content {
+  height: 100vh;
+  overflow-y: auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-left: 1px solid #ccc;
+  width: 95%;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.image-bannerH {
+  width: 95%;
+  height: 300px;
+  background-image: url('src/assets/Welcome.png');
+  background-size: cover;
+  background-position: center;
+  border: 1px solid #ccc;
+}
+
+.welcome-message {
+  font-size: 2rem;
+  color: #2e6067;
+  margin: 20px;
+  text-align: center;
+}
+
+.purpose-section {
+  width: 90%;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  text-align: center;
+  text-justify: inter-word;
+  text-align: justify;
+}
