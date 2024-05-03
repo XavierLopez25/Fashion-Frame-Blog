@@ -1,0 +1,41 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #dee2da;
+  border-bottom: 1px solid #6e7975;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 95%;
+  height: 150px;
+}
+
+.console-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  font-family: 'Khula', sans-serif;
+  font-size: 45px;
+  color: white;
+  justify-content: center;
+}
+
+.console-underscore {
+  display: inline-block;
+  margin-left: 5px;
+  color: #729094;
+}
+
+.image-banner {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.image-banner img {
+  width: 580px;
+  height: 125px;
+  object-fit: cover;
+  object-position: 50% 65%;
+  top: 2px;
+}
