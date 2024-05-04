@@ -5,6 +5,8 @@
   background-color: #f4f4f4;
   border-left: 1px solid #ccc;
   width: 95%;
+  display: flex;
+  justify-content: center;
 }
 
 .home-container {
@@ -40,4 +42,123 @@
   text-align: center;
   text-justify: inter-word;
   text-align: justify;
+}
+
+.about-me .tab-nav button {
+  padding: 5px 10px;
+  margin-right: 5px;
+  background-color: #dee2da;
+  border-width: 2px;
+  border-radius: 0;
+  border-style: outset;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  cursor: pointer;
+  color: black;
+  font-family: 'Nunito Sans', sans-serif;
+  text-align: center;
+  transition: filter 0.1s ease;
+}
+
+.about-me .tab-nav button:hover {
+  background-color: #b8b8b8;
+}
+
+.about-me .tab-nav button:active {
+  border-style: inset;
+  background-color: #a3a3a3;
+  border-color: #808080 #ffffff #ffffff #808080;
+}
+
+.about-me .tab-nav button.active {
+  background-color: #729094;
+  color: white;
+  border-color: #505c5c #f0f8ff #f0f8ff #505c5c;
+}
+
+.about-me .content .item {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f4f4f4;
+  border-left: 5px solid #6e7975;
+}
+
+.about-me .content h3 {
+  color: #2e6067;
+}
+
+.about-me .content p {
+  color: #333;
+}
+
+.item img {
+  width: 95%;
+}
+
+.wtfm_social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 70px;
+}
+
+.wtfm-title {
+  font-size: 2rem;
+  color: #2e6067;
+  margin: 50px;
+  text-align: center;
+}
+
+.social-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.media-tab-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 160px;
+}
+
+.media-tab-nav button {
+  padding: 5px 10px;
+  text-decoration: none;
+  color: black;
+  font-family: 'Nunito Sans', sans-serif;
+  text-align: center;
+  background-color: #dee2da;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  border-radius: 0;
+  display: inline-block;
+  transition: all 0.1s ease;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.media-tab-nav button:hover {
+  background-color: #b8b8b8;
+}
+
+.media-tab-nav button:active {
+  border-style: inset;
+  background-color: #a3a3a3;
+  border-color: #808080 #ffffff #ffffff #808080;
+}
+
+.img-container-wtfm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  gap: 100px;
+}
+
+.img-container-wtfm img {
+  width: 50%;
+  height: auto;
 }
