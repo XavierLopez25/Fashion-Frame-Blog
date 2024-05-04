@@ -9,6 +9,7 @@ import ImageSlider from '../components/ImageSlider/ImageSlider';
 import Header from '../components/Header/Header';
 import NavBar from '../components/NavBar/NavBar';
 import Main from '../components/ContentArea/ContentArea';
+import AdminDashboard from '../components/AdminDashBoard/AdminDashBoard';
 import '../styles/HomePage.css';
 import { useState } from 'react';
 
@@ -28,6 +29,7 @@ const HomePage = () => {
         <div className="section main-section">
           <Header words={['Welcome', 'To', 'My', 'Fashion Frame', 'Blog!']} colors={['#2E6067']} />
           <NavBar currentSection={currentSection} setCurrentSection={setCurrentSection} />
+          <AdminDashboard />
           <Main currentSection={currentSection} />
         </div>
         <div className="section end-section">
