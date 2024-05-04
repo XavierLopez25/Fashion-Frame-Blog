@@ -1,0 +1,31 @@
+.admin-dashboard {
+  background-color: #6e7975;
+  padding: 10px;
+  width: 95%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.admin-dashboard button {
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: #dee2da;
+  border-width: 2px;
+  border-radius: 0;
+  border-style: outset;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  color: black;
+  font-family: 'MS Sans Serif', Geneva, sans-serif;
+  text-align: center;
+  transition: filter 0.1s ease;
+}
+
+.admin-dashboard button:hover {
+  background-color: #b8b8b8;
+}
+
+.admin-dashboard button:active {
+  border-style: inset;
+  background-color: #a3a3a3;
+  border-color: #808080 #ffffff #ffffff #808080;
+}
