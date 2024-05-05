@@ -1,8 +1,8 @@
-const Input = ({ type, placeholder, icon: Icon }) => (
-    <div className="input-box">
-        <input type={type} placeholder={placeholder} required />
-        <Icon className='icon'/>
-    </div>
+const Input = ({ type, placeholder, icon: Icon, value, onChange }) => (
+  <div className="input-box">
+    <input type={type} placeholder={placeholder} required value={value} onChange={onChange} />
+    <Icon className="icon" />
+  </div>
 );
 
 export default Input;
