@@ -9,14 +9,20 @@ import ImageSlider from '../components/ImageSlider/ImageSlider';
 import Header from '../components/Header/Header';
 import NavBar from '../components/NavBar/NavBar';
 import Main from '../components/ContentArea/ContentArea';
-import AdminDashboard from '../components/AdminDashBoard/AdminDashBoard';
+import Dashboard from '../components/Dashboard/Dashboard';
 import NewPostPopup from '../components/Popup/NewPostPopup';
 import UpdatePostPopup from '../components/Popup/EditPostPopup';
 import DeletePostPopup from '../components/Popup/DeletePostPopup';
 import '../styles/HomePage.css';
 import { useState } from 'react';
+import { useAuth } from '../hooks/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
+  const { user, logout } = useAuth();
+  console.log(user);
+  const navigate = useNavigate();
+
   const [volume, setVolume] = useState(50);
   const [currentSection, setCurrentSection] = useState('HOME');
   const [isOpenNewPost, setIsOpenNewPost] = useState(false);
@@ -24,7 +30,6 @@ const HomePage = () => {
   const [isOpenDeletePosts, setIsOpenDeletePosts] = useState(false);
 
   const [posts, setPosts] = useState([
-    // Initially loaded posts, perhaps fetched from a server
     {
       title: 'The Joys of Gardening',
       imageUrl: 'src/assets/Dante Fashion Frame by Ferreus Demon.jfif',
@@ -61,11 +66,10 @@ const HomePage = () => {
       content:
         "Traveling is more than visiting places; it's about experiencing cultures. This post offers insights into how to immerse yourself in local traditions and what to expect in various parts of the world.",
     },
-    // Additional posts
   ]);
 
   const handleSaveNewPost = (newPost) => {
-    setPosts([...posts, newPost]); // This would likely involve a backend API call
+    setPosts([...posts, newPost]);
     setIsOpenNewPost(false);
   };
 
@@ -74,14 +78,19 @@ const HomePage = () => {
       if (post.title === updatedPost.title) return updatedPost;
       return post;
     });
-    setPosts(updatedPosts); // Similarly, an API call to update the backend data
+    setPosts(updatedPosts);
     setIsOpenUpdatePosts(false);
   };
 
   const handleDeletePost = (postTitle) => {
     const updatedPosts = posts.filter((post) => post.title !== postTitle);
-    setPosts(updatedPosts); // An API call to delete the post in the backend
+    setPosts(updatedPosts);
     setIsOpenDeletePosts(false);
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
   };
 
   return (
@@ -96,7 +105,7 @@ const HomePage = () => {
         <div className="section main-section">
           <Header words={['Welcome', 'To', 'My', 'Fashion Frame', 'Blog!']} colors={['#2E6067']} />
           <NavBar currentSection={currentSection} setCurrentSection={setCurrentSection} />
-          <AdminDashboard
+          <Dashboard
             onNewPost={() => setIsOpenNewPost(true)}
             onUpdatePosts={() => setIsOpenUpdatePosts(true)}
             onDeletePosts={() => setIsOpenDeletePosts(true)}
@@ -121,7 +130,7 @@ const HomePage = () => {
           <Main currentSection={currentSection} posts={posts} />
         </div>
         <div className="section end-section">
-          <UserStatus username="JohnDoe" onLogout={() => {}} />
+          <UserStatus username={user ? user.username : 'Guest'} onLogout={handleLogout} />
           <AdminStatus
             emotion="UPSET"
             emoji="💀"
