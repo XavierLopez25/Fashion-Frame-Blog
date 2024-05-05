@@ -1,7 +1,7 @@
 import React from 'react';
-import '../../styles/AdminDashBoard.css';
+import '../../styles/Dashboard.css';
 
-const AdminDashboard = ({ onNewPost, onUpdatePosts, onDeletePosts }) => {
+const Dashboard = ({ onNewPost, onUpdatePosts, onDeletePosts }) => {
   return (
     <div className="admin-dashboard">
       <button onClick={onNewPost}>New Post</button>
@@ -11,4 +11,4 @@ const AdminDashboard = ({ onNewPost, onUpdatePosts, onDeletePosts }) => {
   );
 };
 
-export default AdminDashboard;
+export default Dashboard;
