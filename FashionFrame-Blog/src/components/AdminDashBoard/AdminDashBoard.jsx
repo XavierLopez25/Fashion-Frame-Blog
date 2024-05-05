@@ -1,12 +1,12 @@
 import React from 'react';
 import '../../styles/AdminDashBoard.css';
 
-const AdminDashboard = ({ setCurrentSection }) => {
+const AdminDashboard = ({ onNewPost, onUpdatePosts, onDeletePosts }) => {
   return (
     <div className="admin-dashboard">
-      <button onClick={() => setCurrentSection('NEW POST')}>Add New Post</button>
-      <button onClick={() => setCurrentSection('UPDATE POST')}>Update Posts</button>
-      <button onClick={() => setCurrentSection('DELETE POST')}>Delete Posts</button>
+      <button onClick={onNewPost}>New Post</button>
+      <button onClick={onUpdatePosts}>Update Posts</button>
+      <button onClick={onDeletePosts}>Delete Posts</button>
     </div>
   );
 };
