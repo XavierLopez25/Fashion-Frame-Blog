@@ -63,6 +63,9 @@ const HomePage = () => {
   const editablePosts =
     user.role === 'Administrador' ? posts : posts.filter((post) => post.user_id === user.id);
 
+  const deletablePosts =
+    user.role === 'Administrador' ? posts : posts.filter((post) => post.user_id === user.id);
+
   const handleSaveNewPost = async (newPost) => {
     try {
       const response = await fetch('http://localhost:5000/post', {
@@ -94,10 +97,24 @@ const HomePage = () => {
     setIsOpenUpdatePosts(false);
   };
 
-  const handleDeletePost = (postTitle) => {
-    const updatedPosts = posts.filter((post) => post.title !== postTitle);
-    setPosts(updatedPosts);
-    setIsOpenDeletePosts(false);
+  const handleDeletePost = async (post) => {
+    try {
+      const response = await fetch(`http://localhost:5000/post/${post.id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${authToken}`,
+        },
+      });
+      if (!response.ok) {
+        throw new Error('Failed to delete the post');
+      }
+      const updatedPosts = posts.filter((p) => p.id !== post.id);
+      setPosts(updatedPosts);
+      setIsOpenDeletePosts(false);
+    } catch (error) {
+      console.error('Error deleting post:', error);
+    }
   };
 
   const handleLogout = () => {
@@ -134,7 +151,7 @@ const HomePage = () => {
           )}
           {isOpenDeletePosts && (
             <DeletePostPopup
-              posts={posts}
+              posts={deletablePosts}
               onDelete={handleDeletePost}
               onCancel={() => setIsOpenDeletePosts(false)}
             />
