@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import VolumeControl from '../components/VolumeControl/VolumeControl';
 import MusicPlayer from '../components/MusicPlayer/MusicPlayer';
 import LatestUpdate from '../components/LatestUpdate/LatestUpdate';
@@ -19,7 +19,8 @@ import { useAuth } from '../hooks/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
-  const { user, logout } = useAuth();
+  const { user, logout, authToken } = useAuth();
+  console.log(authToken);
   console.log(user);
   const navigate = useNavigate();
 
@@ -28,49 +29,60 @@ const HomePage = () => {
   const [isOpenNewPost, setIsOpenNewPost] = useState(false);
   const [isOpenUpdatePosts, setIsOpenUpdatePosts] = useState(false);
   const [isOpenDeletePosts, setIsOpenDeletePosts] = useState(false);
+  const [posts, setPosts] = useState([]);
 
-  const [posts, setPosts] = useState([
-    {
-      title: 'The Joys of Gardening',
-      imageUrl: 'src/assets/Dante Fashion Frame by Ferreus Demon.jfif',
-      updatedAt: '2023-05-01',
-      category: 'Hobbies',
-      tags: ['Gardening', 'Sustainability', 'Outdoors'],
-      content:
-        'Gardening is not just about making your house look good. It has a profound effect on health and wellbeing, making it a perfect hobby to discuss on our blog. From starting your garden to advanced tips for seasoned gardeners, find everything you need here.',
-    },
-    {
-      title: 'Exploring the Art of Cooking',
-      imageUrl: 'src/assets/Dante Fashion Frame by Ferreus Demon.jfif',
-      updatedAt: '2023-04-28',
-      category: 'Culinary',
-      tags: ['Cooking', 'Healthy Eating', 'Recipes'],
-      content:
-        'Cooking is both an art and a science, and in this post, we explore the culinary journeys that food enthusiasts can take right in their kitchens. Discover recipes, tips, and tricks to elevate your home cooking into a gourmet experience.',
-    },
-    {
-      title: 'The Impact of Technology on Modern Life',
-      imageUrl: 'src/assets/Dante Fashion Frame by Ferreus Demon.jfif',
-      updatedAt: '2023-04-30',
-      category: 'Technology',
-      tags: ['Tech', 'Innovations', 'Future Trends'],
-      content:
-        'Technology touches every part of our lives, and this post delves into the ways tech has reshaped how we live, work, and play. From AI to IoT, learn about the innovations that are transforming our world.',
-    },
-    {
-      title: 'Traveling the World: A Guide to Cultures',
-      imageUrl: 'src/assets/Dante Fashion Frame by Ferreus Demon.jfif',
-      updatedAt: '2023-05-02',
-      category: 'Travel',
-      tags: ['Travel', 'Cultures', 'Adventure'],
-      content:
-        "Traveling is more than visiting places; it's about experiencing cultures. This post offers insights into how to immerse yourself in local traditions and what to expect in various parts of the world.",
-    },
-  ]);
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/posts', {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        });
+        console.log(authToken);
+        console.log(response);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setPosts(data.data);
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+      }
+    };
 
-  const handleSaveNewPost = (newPost) => {
-    setPosts([...posts, newPost]);
-    setIsOpenNewPost(false);
+    fetchPosts();
+
+    const interval = setInterval(() => {
+      fetchPosts();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const editablePosts =
+    user.role === 'Administrador' ? posts : posts.filter((post) => post.user_id === user.id);
+
+  const handleSaveNewPost = async (newPost) => {
+    try {
+      const response = await fetch('http://localhost:5000/post', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${authToken}`,
+        },
+        body: JSON.stringify(newPost),
+      });
+      console.log(newPost);
+      if (!response.ok) {
+        throw new Error('Failed to create new post');
+      }
+      const postData = await response.json();
+      setPosts([...posts, postData]);
+      setIsOpenNewPost(false);
+    } catch (error) {
+      console.error('Error creating post:', error);
+    }
   };
 
   const handleUpdatePost = (updatedPost) => {
@@ -115,7 +127,7 @@ const HomePage = () => {
           )}
           {isOpenUpdatePosts && (
             <UpdatePostPopup
-              posts={posts}
+              posts={editablePosts}
               onSave={handleUpdatePost}
               onCancel={() => setIsOpenUpdatePosts(false)}
             />
