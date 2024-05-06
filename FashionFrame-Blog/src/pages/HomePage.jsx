@@ -20,8 +20,6 @@ import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
   const { user, logout, authToken } = useAuth();
-  console.log(authToken);
-  console.log(user);
   const navigate = useNavigate();
 
   const [volume, setVolume] = useState(50);
@@ -39,8 +37,6 @@ const HomePage = () => {
             Authorization: `Bearer ${authToken}`,
           },
         });
-        console.log(authToken);
-        console.log(response);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -76,7 +72,6 @@ const HomePage = () => {
         },
         body: JSON.stringify(newPost),
       });
-      console.log(newPost);
       if (!response.ok) {
         throw new Error('Failed to create new post');
       }

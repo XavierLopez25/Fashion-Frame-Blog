@@ -63,7 +63,6 @@ const MusicPlayer = ({ volume }) => {
   useEffect(() => {
     if (currentSong) {
       audioRef.current.src = currentSong;
-      audioRef.current.play().catch((e) => console.log('Failed to play automatically:', e));
       setIsPlaying(true);
     }
   }, [currentSong]);

@@ -50,7 +50,6 @@ const UpdatePostPopup = ({ posts, onSave, onCancel }) => {
       }
 
       const data = await response.json();
-      console.log('Post updated successfully:', data);
       onSave(updatedPost);
     } catch (error) {
       console.error('Error updating post:', error);
