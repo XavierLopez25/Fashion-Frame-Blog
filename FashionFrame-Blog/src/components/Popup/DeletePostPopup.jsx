@@ -7,6 +7,7 @@ const DeletePostPopup = ({ posts, onDelete, onCancel }) => {
 
   const handleConfirmDelete = () => {
     onDelete(selectedPost);
+    setSelectedPost(null);
   };
 
   return (
