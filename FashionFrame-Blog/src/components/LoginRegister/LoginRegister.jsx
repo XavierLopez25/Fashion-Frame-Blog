@@ -38,7 +38,7 @@ export const LoginRegister = () => {
     const data = await response.json();
     if (response.status === 200) {
       localStorage.setItem('token', data.token);
-      login(data.token, { username: data.username, role: data.role });
+      login(data.token, { id: data.id, username: data.username, role: data.role });
       navigate('/home');
     } else {
       alert(data.message);
