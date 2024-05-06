@@ -1,22 +1,60 @@
 import React, { useState } from 'react';
 import Popup from './Popup';
 import '../../styles/UpdateEditPopup.css';
+import { useAuth } from '../../hooks/AuthContext';
 
 const UpdatePostPopup = ({ posts, onSave, onCancel }) => {
   const [selectedPost, setSelectedPost] = useState(null);
+  const { authToken } = useAuth();
 
   const handleSelectPost = (post) => {
-    setSelectedPost(post);
+    const editedPost = {
+      ...post,
+      tags: post.tags,
+    };
+    setSelectedPost(editedPost);
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setSelectedPost((prev) => ({ ...prev, [name]: value }));
+    if (name === 'tags') {
+      setSelectedPost((prev) => ({ ...prev, [name]: value }));
+    } else {
+      setSelectedPost((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onSave(selectedPost);
+    const { id } = selectedPost;
+    const updatedPost = {
+      title: selectedPost.title,
+      warframe: selectedPost.warframe,
+      content: selectedPost.content,
+      tags: selectedPost.tags,
+      image: selectedPost.image,
+    };
+
+    try {
+      const response = await fetch(`http://localhost:5000/post/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${authToken}`,
+        },
+        body: JSON.stringify(updatedPost),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to update post');
+      }
+
+      const data = await response.json();
+      console.log('Post updated successfully:', data);
+      onSave(updatedPost);
+    } catch (error) {
+      console.error('Error updating post:', error);
+    }
   };
 
   return (
@@ -29,15 +67,11 @@ const UpdatePostPopup = ({ posts, onSave, onCancel }) => {
           <label>Content:</label>
           <textarea name="content" value={selectedPost.content} onChange={handleChange} />
           <label>Category:</label>
-          <input name="category" value={selectedPost.category} onChange={handleChange} />
+          <input name="warframe" value={selectedPost.warframe} onChange={handleChange} />
           <label>Tags (comma-separated):</label>
-          <input
-            name="tags"
-            value={selectedPost.tags.join(',')}
-            onChange={(e) =>
-              handleChange({ ...e, target: { ...e.target, value: e.target.value.split(',') } })
-            }
-          />
+          <input name="tags" value={selectedPost.tags} onChange={handleChange} />
+          <label>Image Link:</label>
+          <input name="image" value={selectedPost.image} onChange={handleChange} />
           <button type="submit">Save Changes</button>
         </form>
       ) : (
@@ -53,4 +87,5 @@ const UpdatePostPopup = ({ posts, onSave, onCancel }) => {
     </Popup>
   );
 };
+
 export default UpdatePostPopup;
