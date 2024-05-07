@@ -27,17 +27,27 @@ const AdminPage = () => {
   const [isOpenUpdatePosts, setIsOpenUpdatePosts] = useState(false);
   const [isOpenDeletePosts, setIsOpenDeletePosts] = useState(false);
   const [posts, setPosts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const fetchPosts = async () => {
+    setIsLoading(true);
+    setError(null);
     try {
       const response = await fetch('http://localhost:5000/posts');
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
+      if (data.data.length === 0) {
+        throw new Error('No posts found');
+      }
       setPosts(data.data);
     } catch (error) {
       console.error('Error fetching posts:', error);
+      setError(error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -107,13 +117,15 @@ const AdminPage = () => {
     }
   };
 
+  const latestPost = posts[posts.length - 1];
+
   return (
     <div className="main-container">
       <div className="secondary-container">
         <div className="section start-section">
           <VolumeControl volume={volume} setVolume={setVolume} />
           <MusicPlayer volume={volume} />
-          <LatestUpdate />
+          <LatestUpdate posts={latestPost} />
           <GifDisplay />
         </div>
         <div className="section main-section">
@@ -143,7 +155,7 @@ const AdminPage = () => {
               onCancel={() => setIsOpenDeletePosts(false)}
             />
           )}
-          <Main currentSection={currentSection} posts={posts} />
+          <Main currentSection={currentSection} posts={posts} isLoading={isLoading} error={error} />
         </div>
         <div className="section end-section">
           <UserStatus
