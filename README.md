@@ -8,8 +8,8 @@
 
 - **Dynamic Posts** 📝: Browse through the latest submissions and see what's trending in the Warframe fashion world.
 - **User Role System** 🔑: Different levels of access and interaction based on user roles. Guests can view posts, while registered users can create, update, and delete their own posts.
-- **User Authentication** 🔒: Secure login system for users to access their profiles and interact with the blog.
-- **Guest Viewing** 🌐: No need to create an account to explore the content. Guests can freely view all public posts.
+- **User Authentication** 🔒: Secure login system for users to access their profiles and interact with the blog. [Click here to login/register](https://fashion-frame-blog-ri09rneva-xavierlopez25s-projects-9e5c1572.vercel.app/login)
+- **Guest Viewing** 🌐: No need to create an account to explore the content. Guests can freely view all public posts. [Click here to see the guest view](https://fashion-frame-blog-ri09rneva-xavierlopez25s-projects-9e5c1572.vercel.app/home)
 
 ## Technologies 🛠️
 
