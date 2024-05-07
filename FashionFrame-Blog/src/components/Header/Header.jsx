@@ -1,38 +1,38 @@
-import { useState, useEffect } from 'react';
-import '../../styles/Header.css';
-import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react'
+import '../../styles/Header.css'
+import PropTypes from 'prop-types'
 
 const Header = ({ words, colors }) => {
-  const [displayedText, setDisplayedText] = useState('');
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [letterIndex, setLetterIndex] = useState(1);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [underscoreVisible, setUnderscoreVisible] = useState(true);
+  const [displayedText, setDisplayedText] = useState('')
+  const [currentWordIndex, setCurrentWordIndex] = useState(0)
+  const [letterIndex, setLetterIndex] = useState(1)
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [underscoreVisible, setUnderscoreVisible] = useState(true)
 
   useEffect(() => {
-    const typingSpeed = isDeleting ? 60 : 120;
+    const typingSpeed = isDeleting ? 60 : 120
     const timeout = setTimeout(() => {
-      setDisplayedText(words[currentWordIndex].substring(0, letterIndex));
+      setDisplayedText(words[currentWordIndex].substring(0, letterIndex))
       if (!isDeleting && letterIndex === words[currentWordIndex].length + 1) {
-        setTimeout(() => setIsDeleting(true), 1000);
+        setTimeout(() => setIsDeleting(true), 1000)
       } else if (isDeleting && letterIndex === 0) {
-        setIsDeleting(false);
-        setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
-        setLetterIndex(1);
+        setIsDeleting(false)
+        setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length)
+        setLetterIndex(1)
       } else {
-        setLetterIndex((prevIndex) => prevIndex + (isDeleting ? -1 : 1));
+        setLetterIndex((prevIndex) => prevIndex + (isDeleting ? -1 : 1))
       }
-    }, typingSpeed);
+    }, typingSpeed)
 
-    return () => clearTimeout(timeout);
-  }, [letterIndex, isDeleting, words, currentWordIndex]);
+    return () => clearTimeout(timeout)
+  }, [letterIndex, isDeleting, words, currentWordIndex])
 
   useEffect(() => {
     const blinkInterval = setInterval(() => {
-      setUnderscoreVisible((visible) => !visible);
-    }, 400);
-    return () => clearInterval(blinkInterval);
-  }, []);
+      setUnderscoreVisible((visible) => !visible)
+    }, 400)
+    return () => clearInterval(blinkInterval)
+  }, [])
 
   return (
     <div className="header">
@@ -46,17 +46,17 @@ const Header = ({ words, colors }) => {
       </div>
       <div className="image-banner">
         <img
-          src="https://www.onrpg.com/wp-content/uploads/2013/01/Warframe-Profile-Banner.png"
+          src="https://i.postimg.cc/Wb867QKt/Warframe-Profile-Banner.png"
           alt="Banner for Site"
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
 Header.propTypes = {
   words: PropTypes.arrayOf(PropTypes.string).isRequired,
-  colors: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
+  colors: PropTypes.arrayOf(PropTypes.string).isRequired
+}
 
-export default Header;
+export default Header
