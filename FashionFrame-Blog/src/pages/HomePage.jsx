@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import VolumeControl from '../components/VolumeControl/VolumeControl';
 import MusicPlayer from '../components/MusicPlayer/MusicPlayer';
 import LatestUpdate from '../components/LatestUpdate/LatestUpdate';
@@ -14,7 +14,6 @@ import NewPostPopup from '../components/Popup/NewPostPopup';
 import UpdatePostPopup from '../components/Popup/EditPostPopup';
 import DeletePostPopup from '../components/Popup/DeletePostPopup';
 import '../styles/HomePage.css';
-import { useState } from 'react';
 import { useAuth } from '../hooks/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -30,6 +29,11 @@ const HomePage = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
+    if (!user) {
+      navigate('/login');
+      return;
+    }
+
     const fetchPosts = async () => {
       try {
         const response = await fetch('http://localhost:5000/posts', {
@@ -55,6 +59,10 @@ const HomePage = () => {
 
     return () => clearInterval(interval);
   }, []);
+
+  if (!user) {
+    return <div>Loading...</div>;
+  }
 
   const editablePosts =
     user.role === 'Administrador' ? posts : posts.filter((post) => post.user_id === user.id);
