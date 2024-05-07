@@ -1,124 +1,124 @@
-import React, { useEffect, useState, Suspense } from 'react'
-import VolumeControl from '../components/VolumeControl/VolumeControl'
-import MusicPlayer from '../components/MusicPlayer/MusicPlayer'
-import GifDisplay from '../components/GifDisplay/GifDisplay'
-import UserStatus from '../components/UserStatus/UserStatus'
-import AdminStatus from '../components/AdminStatus/AdminStatus'
-import ImageSlider from '../components/ImageSlider/ImageSlider'
-import Header from '../components/Header/Header'
-import NavBar from '../components/NavBar/NavBar'
-import Dashboard from '../components/Dashboard/Dashboard'
-import NewPostPopup from '../components/Popup/NewPostPopup'
-import UpdatePostPopup from '../components/Popup/EditPostPopup'
-import DeletePostPopup from '../components/Popup/DeletePostPopup'
-import '../styles/HomePage.css'
-import { useAuth } from '../hooks/AuthContext'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState, Suspense } from 'react';
+import VolumeControl from '../components/VolumeControl/VolumeControl';
+import MusicPlayer from '../components/MusicPlayer/MusicPlayer';
+import GifDisplay from '../components/GifDisplay/GifDisplay';
+import UserStatus from '../components/UserStatus/UserStatus';
+import AdminStatus from '../components/AdminStatus/AdminStatus';
+import ImageSlider from '../components/ImageSlider/ImageSlider';
+import Header from '../components/Header/Header';
+import NavBar from '../components/NavBar/NavBar';
+import Dashboard from '../components/Dashboard/Dashboard';
+import NewPostPopup from '../components/Popup/NewPostPopup';
+import UpdatePostPopup from '../components/Popup/EditPostPopup';
+import DeletePostPopup from '../components/Popup/DeletePostPopup';
+import '../styles/HomePage.css';
+import { useAuth } from '../hooks/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const AdminPage = () => {
-  const { user, logout, authToken } = useAuth()
-  const navigate = useNavigate()
+  const { user, logout, authToken } = useAuth();
+  const navigate = useNavigate();
 
-  const LatestUpdate = React.lazy(() => import('../components/LatestUpdate/LatestUpdate'))
-  const Main = React.lazy(() => import('../components/ContentArea/ContentArea'))
+  const LatestUpdate = React.lazy(() => import('../components/LatestUpdate/LatestUpdate'));
+  const Main = React.lazy(() => import('../components/ContentArea/ContentArea'));
 
-  const [volume, setVolume] = useState(50)
-  const [currentSection, setCurrentSection] = useState('HOME')
-  const [isOpenNewPost, setIsOpenNewPost] = useState(false)
-  const [isOpenUpdatePosts, setIsOpenUpdatePosts] = useState(false)
-  const [isOpenDeletePosts, setIsOpenDeletePosts] = useState(false)
-  const [posts, setPosts] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState(null)
+  const [volume, setVolume] = useState(50);
+  const [currentSection, setCurrentSection] = useState('HOME');
+  const [isOpenNewPost, setIsOpenNewPost] = useState(false);
+  const [isOpenUpdatePosts, setIsOpenUpdatePosts] = useState(false);
+  const [isOpenDeletePosts, setIsOpenDeletePosts] = useState(false);
+  const [posts, setPosts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const fetchPosts = async () => {
-    setIsLoading(true)
-    setError(null)
+    setIsLoading(true);
+    setError(null);
     try {
-      const response = await fetch('http://localhost:5000/posts')
+      const response = await fetch('https://api-fashion-frame.vercel.app/posts');
       if (!response.ok) {
-        throw new Error('Network response was not ok')
+        throw new Error('Network response was not ok');
       }
-      const data = await response.json()
+      const data = await response.json();
       if (data.data.length === 0) {
-        throw new Error('No posts found')
+        throw new Error('No posts found');
       }
-      setPosts(data.data)
+      setPosts(data.data);
     } catch (error) {
-      console.error('Error fetching posts:', error)
-      setError(error.message)
+      console.error('Error fetching posts:', error);
+      setError(error.message);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
-    fetchPosts()
-  }, [])
+    fetchPosts();
+  }, []);
 
   const handleSaveNewPost = async (newPost) => {
     try {
-      const response = await fetch('http://localhost:5000/post', {
+      const response = await fetch('https://api-fashion-frame.vercel.app/post', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${authToken}`
+          Authorization: `Bearer ${authToken}`,
         },
-        body: JSON.stringify(newPost)
-      })
+        body: JSON.stringify(newPost),
+      });
       if (!response.ok) {
-        throw new Error('Failed to create new post')
+        throw new Error('Failed to create new post');
       }
-      const postData = await response.json()
-      setPosts([...posts, postData])
-      setIsOpenNewPost(false)
-      fetchPosts()
+      const postData = await response.json();
+      setPosts([...posts, postData]);
+      setIsOpenNewPost(false);
+      fetchPosts();
     } catch (error) {
-      console.error('Error creating post:', error)
+      console.error('Error creating post:', error);
     }
-  }
+  };
 
   const handleUpdatePost = (updatedPost) => {
     const updatedPosts = posts.map((post) => {
-      if (post.title === updatedPost.title) return updatedPost
-      return post
-    })
-    setPosts(updatedPosts)
-    setIsOpenUpdatePosts(false)
-    fetchPosts()
-  }
+      if (post.title === updatedPost.title) return updatedPost;
+      return post;
+    });
+    setPosts(updatedPosts);
+    setIsOpenUpdatePosts(false);
+    fetchPosts();
+  };
 
   const handleDeletePost = async (post) => {
     try {
-      const response = await fetch(`http://localhost:5000/post/${post.id}`, {
+      const response = await fetch(`https://api-fashion-frame.vercel.app/post/${post.id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${authToken}`
-        }
-      })
+          Authorization: `Bearer ${authToken}`,
+        },
+      });
       if (!response.ok) {
-        throw new Error('Failed to delete the post')
+        throw new Error('Failed to delete the post');
       }
-      const updatedPosts = posts.filter((p) => p.id !== post.id)
-      setPosts(updatedPosts)
-      setIsOpenDeletePosts(false)
-      fetchPosts()
+      const updatedPosts = posts.filter((p) => p.id !== post.id);
+      setPosts(updatedPosts);
+      setIsOpenDeletePosts(false);
+      fetchPosts();
     } catch (error) {
-      console.error('Error deleting post:', error)
+      console.error('Error deleting post:', error);
     }
-  }
+  };
 
   const handleLogout = () => {
     if (authToken) {
-      logout()
-      navigate('/login')
+      logout();
+      navigate('/login');
     } else {
-      navigate('/login')
+      navigate('/login');
     }
-  }
+  };
 
-  const latestPost = posts[posts.length - 1]
+  const latestPost = posts[posts.length - 1];
 
   return (
     <div className="main-container">
@@ -184,7 +184,7 @@ const AdminPage = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AdminPage
+export default AdminPage;
