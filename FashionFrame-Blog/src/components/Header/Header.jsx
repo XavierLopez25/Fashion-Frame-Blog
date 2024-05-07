@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import '../../styles/Header.css'
+import PropTypes from 'prop-types'
 
 const Header = ({ words, colors }) => {
   const [displayedText, setDisplayedText] = useState('')
@@ -48,6 +49,11 @@ const Header = ({ words, colors }) => {
       </div>
     </div>
   )
+}
+
+Header.propTypes = {
+  words: PropTypes.arrayOf(PropTypes.string).isRequired,
+  colors: PropTypes.arrayOf(PropTypes.string).isRequired
 }
 
 export default Header

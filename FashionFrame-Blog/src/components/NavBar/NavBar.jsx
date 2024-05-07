@@ -1,6 +1,5 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
 import '../../styles/NavBar.css'
+import PropTypes from 'prop-types'
 
 const NavBar = ({ setCurrentSection }) => {
   return (
@@ -21,6 +20,10 @@ const NavBar = ({ setCurrentSection }) => {
       </ul>
     </nav>
   )
+}
+
+NavBar.propTypes = {
+  setCurrentSection: PropTypes.func.isRequired
 }
 
 export default NavBar

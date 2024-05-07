@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import '../../styles/SongSelector.css'
+import PropTypes from 'prop-types'
 
 const CustomDropdown = ({ songs, selectedSongName, handleSongChange }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -27,6 +28,18 @@ const CustomDropdown = ({ songs, selectedSongName, handleSongChange }) => {
       )}
     </div>
   )
+}
+
+CustomDropdown.propTypes = {
+  songs: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired
+      // Add other required properties if necessary
+    })
+  ).isRequired,
+  selectedSongName: PropTypes.string.isRequired,
+  handleSongChange: PropTypes.func.isRequired
 }
 
 export default CustomDropdown

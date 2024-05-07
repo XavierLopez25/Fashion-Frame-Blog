@@ -1,5 +1,5 @@
-import React from 'react'
 import '../../styles/Dashboard.css'
+import PropTypes from 'prop-types'
 
 const Dashboard = ({ onNewPost, onUpdatePosts, onDeletePosts }) => {
   return (
@@ -9,6 +9,12 @@ const Dashboard = ({ onNewPost, onUpdatePosts, onDeletePosts }) => {
       <button onClick={onDeletePosts}>Delete Posts</button>
     </div>
   )
+}
+
+Dashboard.propTypes = {
+  onNewPost: PropTypes.func.isRequired,
+  onUpdatePosts: PropTypes.func.isRequired,
+  onDeletePosts: PropTypes.func.isRequired
 }
 
 export default Dashboard

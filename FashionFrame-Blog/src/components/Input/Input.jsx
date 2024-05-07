@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const Input = React.forwardRef(({ type, placeholder, icon: Icon, ...rest }, ref) => {
   return (
@@ -6,7 +7,15 @@ const Input = React.forwardRef(({ type, placeholder, icon: Icon, ...rest }, ref)
       {Icon && <Icon className="icon" />}
       <input type={type} placeholder={placeholder} ref={ref} {...rest} />
     </div>
-  );
-});
+  )
+})
 
-export default Input;
+Input.displayName = 'Input'
+
+Input.propTypes = {
+  type: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  icon: PropTypes.elementType
+}
+
+export default Input

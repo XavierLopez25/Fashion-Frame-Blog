@@ -1,5 +1,5 @@
-import React from 'react'
 import Magnifier from './Magnifier'
+import PropTypes from 'prop-types'
 
 const formatDate = (dateString) => {
   const date = new Date(dateString)
@@ -79,6 +79,19 @@ const Post = ({ posts }) => {
       ))}
     </div>
   )
+}
+
+Post.propTypes = {
+  posts: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      image_base64: PropTypes.string.isRequired,
+      created_at: PropTypes.string.isRequired,
+      warframe: PropTypes.string.isRequired,
+      tags: PropTypes.string,
+      content: PropTypes.string.isRequired
+    })
+  ).isRequired
 }
 
 export default Post

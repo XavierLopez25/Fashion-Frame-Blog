@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import '../../styles/Magnifier.css'
+import PropTypes from 'prop-types'
 
 const Magnifier = ({ src, alt }) => {
   const [zoom, setZoom] = useState(false)
@@ -31,6 +32,11 @@ const Magnifier = ({ src, alt }) => {
       )}
     </div>
   )
+}
+
+Magnifier.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired
 }
 
 export default Magnifier

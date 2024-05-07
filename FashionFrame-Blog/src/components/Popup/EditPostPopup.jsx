@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Popup from './Popup'
 import '../../styles/UpdateEditPopup.css'
 import { useAuth } from '../../hooks/AuthContext'
+import PropTypes from 'prop-types'
 
 const UpdatePostPopup = ({ posts, onSave, onCancel }) => {
   const [selectedPost, setSelectedPost] = useState(null)
@@ -50,6 +51,7 @@ const UpdatePostPopup = ({ posts, onSave, onCancel }) => {
       }
 
       const data = await response.json()
+      console.log('Updated post:', data)
       onSave(updatedPost)
     } catch (error) {
       console.error('Error updating post:', error)
@@ -87,6 +89,21 @@ const UpdatePostPopup = ({ posts, onSave, onCancel }) => {
           )}
     </Popup>
   )
+}
+
+UpdatePostPopup.propTypes = {
+  posts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      warframe: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+      tags: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired
+    })
+  ).isRequired,
+  onSave: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired
 }
 
 export default UpdatePostPopup

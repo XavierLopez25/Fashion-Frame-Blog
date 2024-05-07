@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Popup from './Popup'
 import { useAuth } from '../../hooks/AuthContext'
+import PropTypes from 'prop-types'
 
 const NewPostPopup = ({ onSave, onCancel }) => {
   const [post, setPost] = useState({
@@ -52,6 +53,11 @@ const NewPostPopup = ({ onSave, onCancel }) => {
       </form>
     </Popup>
   )
+}
+
+NewPostPopup.propTypes = {
+  onSave: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired
 }
 
 export default NewPostPopup

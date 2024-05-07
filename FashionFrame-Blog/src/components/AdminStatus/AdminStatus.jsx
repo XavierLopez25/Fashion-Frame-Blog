@@ -1,5 +1,5 @@
-import React from 'react'
-import '../../styles/AdminStatus.css' // Make sure to create and link the CSS file
+import '../../styles/AdminStatus.css'
+import PropTypes from 'prop-types'
 
 const AdminStatus = ({ emotion, emoji, daysAgo, additionalText }) => {
   const timeText = daysAgo === '1' ? 'day ago' : 'days ago'
@@ -20,6 +20,13 @@ const AdminStatus = ({ emotion, emoji, daysAgo, additionalText }) => {
       </div>
     </div>
   )
+}
+
+AdminStatus.propTypes = {
+  emotion: PropTypes.string.isRequired,
+  emoji: PropTypes.string.isRequired,
+  daysAgo: PropTypes.string.isRequired,
+  additionalText: PropTypes.string
 }
 
 export default AdminStatus
