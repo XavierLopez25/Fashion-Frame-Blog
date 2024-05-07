@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-function SocialMediaLinks () {
+function SocialMediaLinks() {
   return (
     <div className="wtfm_social">
       <h1 className="wtfm-title">Where to find me?</h1>
@@ -24,19 +24,19 @@ function SocialMediaLinks () {
           className="media-tab-nav
 "
         >
-          <button onClick={() => (window.location.href = 'https://github.com/yourUsername')}>
+          <button onClick={() => window.open('https://github.com/XavierLopez25', '_blank')}>
             Find Me on GitHub as @yourUsername
           </button>
-          <button onClick={() => (window.location.href = 'https://instagram.com/yourUsername')}>
+          <button onClick={() => window.open('https://instagram.com/nathan_nugget', '_blank')}>
             Find Me on Instagram as @yourUsername
           </button>
-          <button onClick={() => (window.location.href = 'https://twitter.com/yourUsername')}>
+          <button onClick={() => window.open('https://twitter.com/xlopezn8', '_blank')}>
             Find Me on Twitter as @yourUsername
           </button>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default SocialMediaLinks
+export default SocialMediaLinks;
