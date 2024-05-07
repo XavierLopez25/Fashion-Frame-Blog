@@ -28,43 +28,33 @@ const HomePage = () => {
   const [isOpenDeletePosts, setIsOpenDeletePosts] = useState(false);
   const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
-    if (!user) {
-      navigate('/login');
-      return;
-    }
-
-    const fetchPosts = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/posts');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        setPosts(data.data);
-      } catch (error) {
-        console.error('Error fetching posts:', error);
+  const fetchPosts = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/posts');
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
       }
-    };
+      const data = await response.json();
+      setPosts(data.data);
+    } catch (error) {
+      console.error('Error fetching posts:', error);
+    }
+  };
 
+  useEffect(() => {
     fetchPosts();
-
-    const interval = setInterval(() => {
-      fetchPosts();
-    }, 5000);
-
-    return () => clearInterval(interval);
   }, []);
 
-  if (!user) {
-    return <div>Loading...</div>;
+  let editablePosts = [];
+  let deletablePosts = [];
+
+  if (user) {
+    editablePosts =
+      user.role === 'Administrador' ? posts : posts.filter((post) => post.user_id === user.id);
+
+    deletablePosts =
+      user.role === 'Administrador' ? posts : posts.filter((post) => post.user_id === user.id);
   }
-
-  const editablePosts =
-    user.role === 'Administrador' ? posts : posts.filter((post) => post.user_id === user.id);
-
-  const deletablePosts =
-    user.role === 'Administrador' ? posts : posts.filter((post) => post.user_id === user.id);
 
   const handleSaveNewPost = async (newPost) => {
     try {
@@ -82,6 +72,7 @@ const HomePage = () => {
       const postData = await response.json();
       setPosts([...posts, postData]);
       setIsOpenNewPost(false);
+      fetchPosts();
     } catch (error) {
       console.error('Error creating post:', error);
     }
@@ -94,6 +85,7 @@ const HomePage = () => {
     });
     setPosts(updatedPosts);
     setIsOpenUpdatePosts(false);
+    fetchPosts();
   };
 
   const handleDeletePost = async (post) => {
@@ -111,14 +103,19 @@ const HomePage = () => {
       const updatedPosts = posts.filter((p) => p.id !== post.id);
       setPosts(updatedPosts);
       setIsOpenDeletePosts(false);
+      fetchPosts();
     } catch (error) {
       console.error('Error deleting post:', error);
     }
   };
 
   const handleLogout = () => {
-    logout();
-    navigate('/login');
+    if (authToken) {
+      logout();
+      navigate('/login');
+    } else {
+      navigate('/login');
+    }
   };
 
   return (
@@ -133,11 +130,13 @@ const HomePage = () => {
         <div className="section main-section">
           <Header words={['Welcome', 'To', 'My', 'Fashion Frame', 'Blog!']} colors={['#2E6067']} />
           <NavBar currentSection={currentSection} setCurrentSection={setCurrentSection} />
-          <Dashboard
-            onNewPost={() => setIsOpenNewPost(true)}
-            onUpdatePosts={() => setIsOpenUpdatePosts(true)}
-            onDeletePosts={() => setIsOpenDeletePosts(true)}
-          />
+          {authToken && (
+            <Dashboard
+              onNewPost={() => setIsOpenNewPost(true)}
+              onUpdatePosts={() => setIsOpenUpdatePosts(true)}
+              onDeletePosts={() => setIsOpenDeletePosts(true)}
+            />
+          )}
           {isOpenNewPost && (
             <NewPostPopup onSave={handleSaveNewPost} onCancel={() => setIsOpenNewPost(false)} />
           )}
@@ -158,7 +157,11 @@ const HomePage = () => {
           <Main currentSection={currentSection} posts={posts} />
         </div>
         <div className="section end-section">
-          <UserStatus username={user ? user.username : 'Guest'} onLogout={handleLogout} />
+          <UserStatus
+            username={user ? user.username : 'Guest'}
+            onLogout={handleLogout}
+            isAuthenticated={!!authToken}
+          />
           <AdminStatus
             emotion="UPSET"
             emoji="💀"
