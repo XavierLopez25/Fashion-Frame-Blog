@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import VolumeControl from '../components/VolumeControl/VolumeControl';
 import MusicPlayer from '../components/MusicPlayer/MusicPlayer';
-import LatestUpdate from '../components/LatestUpdate/LatestUpdate';
 import GifDisplay from '../components/GifDisplay/GifDisplay';
 import UserStatus from '../components/UserStatus/UserStatus';
 import AdminStatus from '../components/AdminStatus/AdminStatus';
 import ImageSlider from '../components/ImageSlider/ImageSlider';
 import Header from '../components/Header/Header';
 import NavBar from '../components/NavBar/NavBar';
-import Main from '../components/ContentArea/ContentArea';
 import Dashboard from '../components/Dashboard/Dashboard';
 import NewPostPopup from '../components/Popup/NewPostPopup';
 import UpdatePostPopup from '../components/Popup/EditPostPopup';
@@ -20,6 +18,9 @@ import { useNavigate } from 'react-router-dom';
 const AdminPage = () => {
   const { user, logout, authToken } = useAuth();
   const navigate = useNavigate();
+
+  const LatestUpdate = React.lazy(() => import('../components/LatestUpdate/LatestUpdate'));
+  const Main = React.lazy(() => import('../components/ContentArea/ContentArea'));
 
   const [volume, setVolume] = useState(50);
   const [currentSection, setCurrentSection] = useState('HOME');
@@ -125,7 +126,9 @@ const AdminPage = () => {
         <div className="section start-section">
           <VolumeControl volume={volume} setVolume={setVolume} />
           <MusicPlayer volume={volume} />
-          <LatestUpdate posts={latestPost} />
+          <Suspense fallback={<div>Loading Latest Updates...</div>}>
+            <LatestUpdate posts={latestPost} />
+          </Suspense>
           <GifDisplay />
         </div>
         <div className="section main-section">
@@ -155,7 +158,14 @@ const AdminPage = () => {
               onCancel={() => setIsOpenDeletePosts(false)}
             />
           )}
-          <Main currentSection={currentSection} posts={posts} isLoading={isLoading} error={error} />
+          <Suspense fallback={<div>Loading Main Content...</div>}>
+            <Main
+              currentSection={currentSection}
+              posts={posts}
+              isLoading={isLoading}
+              error={error}
+            />
+          </Suspense>
         </div>
         <div className="section end-section">
           <UserStatus
