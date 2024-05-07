@@ -36,11 +36,7 @@ const HomePage = () => {
 
     const fetchPosts = async () => {
       try {
-        const response = await fetch('http://localhost:5000/posts', {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-        });
+        const response = await fetch('http://localhost:5000/posts');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
