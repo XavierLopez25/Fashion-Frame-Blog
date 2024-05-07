@@ -1,27 +1,27 @@
-import React, { useState } from 'react';
-import '../../styles/ContentArea.css';
-import Home from './Home';
-import AboutMe from './AboutMe';
-import WhereToFindMe from './WhereToFindMe';
-import Posts from './Posts';
+import React, { useState } from 'react'
+import '../../styles/ContentArea.css'
+import Home from './Home'
+import AboutMe from './AboutMe'
+import WhereToFindMe from './WhereToFindMe'
+import Posts from './Posts'
 
 const Main = ({ currentSection, posts }) => {
   const renderSection = () => {
     switch (currentSection) {
       case 'HOME':
-        return <Home />;
+        return <Home />
       case 'POSTS':
-        return <Posts posts={posts}></Posts>;
+        return <Posts posts={posts}></Posts>
       case 'ABOUT ME':
-        return <AboutMe />;
+        return <AboutMe />
       case 'WHERE TO FIND ME':
-        return <WhereToFindMe />;
+        return <WhereToFindMe />
       default:
-        return <div>Content not found!</div>;
+        return <div>Content not found!</div>
     }
-  };
+  }
 
-  return <div className="main-content">{renderSection()}</div>;
-};
+  return <div className="main-content">{renderSection()}</div>
+}
 
-export default Main;
+export default Main

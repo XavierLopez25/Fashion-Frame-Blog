@@ -1,6 +1,6 @@
 // Popup.js
-import React from 'react';
-import '../../styles/Popup.css';
+import React from 'react'
+import '../../styles/Popup.css'
 
 const Popup = ({ onClose, children }) => {
   return (
@@ -12,7 +12,7 @@ const Popup = ({ onClose, children }) => {
         {children}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Popup;
+export default Popup

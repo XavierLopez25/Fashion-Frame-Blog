@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import '../../styles/ImageSlider.css';
+import React, { useState, useEffect } from 'react'
+import '../../styles/ImageSlider.css'
 
 const ImageSlider = () => {
   const initialImages = [
@@ -28,65 +28,65 @@ const ImageSlider = () => {
     { src: 'https://anlucas.neocities.org/winrar.jpg', alt: 'winrar' },
     {
       src: 'https://neonaut.neocities.org/images/buttons/neocitizens/brekingbad.png',
-      alt: 'brekingbad',
+      alt: 'brekingbad'
     },
     { src: 'https://inpieces.rip/pix/thanksvhs.gif', alt: 'thanksvhs' },
     {
       src: 'https://neonaut.neocities.org/images/buttons/neocitizens/loves1ck.png',
-      alt: 'loves1ck',
+      alt: 'loves1ck'
     },
     {
       src: 'https://neonaut.neocities.org/images/buttons/neocitizens/lovelandisle.png',
-      alt: 'lovelandisle',
+      alt: 'lovelandisle'
     },
     {
       src: 'https://neonaut.neocities.org/images/buttons/neocitizens/mandarin.gif',
-      alt: 'mandarin',
+      alt: 'mandarin'
     },
     {
       src: 'https://neonaut.neocities.org/images/buttons/neocitizens/pnfrlenm.gif',
-      alt: 'pnfrlenm',
+      alt: 'pnfrlenm'
     },
     {
       src: 'https://neonaut.neocities.org/images/buttons/neocitizens/pixelbank.gif',
-      alt: 'pixelbank',
+      alt: 'pixelbank'
     },
     {
       src: 'https://neonaut.neocities.org/images/buttons/neocitizens/quoderatdemonstrandum.gif',
-      alt: 'quoderatdemonstrandum',
+      alt: 'quoderatdemonstrandum'
     },
     {
       src: 'https://neonaut.neocities.org/images/buttons/neocitizens/retrogamer.gif',
-      alt: 'retrogamer',
+      alt: 'retrogamer'
     },
     { src: 'https://capstasher.neocities.org/88x31Buttons/beyes.gif', alt: 'beyes' },
     {
       src: 'https://neonaut.neocities.org/images/buttons/neocitizens/stockinganarchy.png',
-      alt: 'stockinganarchy',
+      alt: 'stockinganarchy'
     },
     {
       src: 'https://neonaut.neocities.org/images/buttons/neocitizens/neppermint.gif',
-      alt: 'neppermint',
+      alt: 'neppermint'
     },
     {
       src: 'https://neonaut.neocities.org/images/buttons/neocitizens/primaballerina.png',
-      alt: 'primaballerina',
+      alt: 'primaballerina'
     },
     {
       src: 'https://neonaut.neocities.org/images/buttons/neocitizens/cloverleaf.png',
-      alt: 'cloverleaf',
+      alt: 'cloverleaf'
     },
     {
       src: 'https://neonaut.neocities.org/images/buttons/neocitizens/emeralds.jpg',
-      alt: 'emeralds',
-    },
-  ];
+      alt: 'emeralds'
+    }
+  ]
 
-  const [images, setImages] = useState(initialImages);
+  const [images, setImages] = useState(initialImages)
 
   useEffect(() => {
-    setImages((images) => [...images, ...images]);
-  }, []);
+    setImages((images) => [...images, ...images])
+  }, [])
 
   return (
     <div className="image-slider">
@@ -98,7 +98,7 @@ const ImageSlider = () => {
         ))}
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default ImageSlider;
+export default ImageSlider

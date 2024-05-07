@@ -1,8 +1,8 @@
-import React from 'react';
-import '../../styles/AdminStatus.css'; // Make sure to create and link the CSS file
+import React from 'react'
+import '../../styles/AdminStatus.css' // Make sure to create and link the CSS file
 
 const AdminStatus = ({ emotion, emoji, daysAgo, additionalText }) => {
-  const timeText = daysAgo === '1' ? 'day ago' : 'days ago';
+  const timeText = daysAgo === '1' ? 'day ago' : 'days ago'
 
   return (
     <div className="admin-status">
@@ -19,7 +19,7 @@ const AdminStatus = ({ emotion, emoji, daysAgo, additionalText }) => {
         <div className="status-additional">{additionalText}</div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AdminStatus;
+export default AdminStatus

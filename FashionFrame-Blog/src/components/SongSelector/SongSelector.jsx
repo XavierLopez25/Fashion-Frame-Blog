@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import '../../styles/SongSelector.css';
+import React, { useState } from 'react'
+import '../../styles/SongSelector.css'
 
 const CustomDropdown = ({ songs, selectedSongName, handleSongChange }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
-  const toggleDropdown = () => setIsOpen(!isOpen);
+  const toggleDropdown = () => setIsOpen(!isOpen)
 
   const handleSelect = (song) => {
-    handleSongChange(song);
-    setIsOpen(false);
-  };
+    handleSongChange(song)
+    setIsOpen(false)
+  }
 
   return (
     <div className="custom-select">
@@ -26,7 +26,7 @@ const CustomDropdown = ({ songs, selectedSongName, handleSongChange }) => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default CustomDropdown;
+export default CustomDropdown

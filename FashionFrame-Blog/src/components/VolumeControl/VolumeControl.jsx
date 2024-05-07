@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
-import '../../styles/VolumeControl.css';
-import { VscChromeMaximize } from 'react-icons/vsc';
-import { VscChromeMinimize } from 'react-icons/vsc';
-import { VscChromeClose } from 'react-icons/vsc';
-import { LiaVolumeUpSolid } from 'react-icons/lia';
+import React, { useState } from 'react'
+import '../../styles/VolumeControl.css'
+import { VscChromeMaximize, VscChromeMinimize, VscChromeClose } from 'react-icons/vsc'
+import { LiaVolumeUpSolid } from 'react-icons/lia'
 
 const VolumeControl = ({ volume, setVolume }) => {
   const handleVolumeChange = (event) => {
-    setVolume(event.target.value);
-  };
+    setVolume(event.target.value)
+  }
 
   return (
     <div className="volume-control">
@@ -39,7 +37,7 @@ const VolumeControl = ({ volume, setVolume }) => {
       />
       <div className="volume-display">{volume}%</div>
     </div>
-  );
-};
+  )
+}
 
-export default VolumeControl;
+export default VolumeControl

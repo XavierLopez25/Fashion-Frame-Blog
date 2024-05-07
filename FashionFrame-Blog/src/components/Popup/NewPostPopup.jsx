@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import Popup from './Popup';
-import { useAuth } from '../../hooks/AuthContext';
+import React, { useState } from 'react'
+import Popup from './Popup'
+import { useAuth } from '../../hooks/AuthContext'
 
 const NewPostPopup = ({ onSave, onCancel }) => {
   const [post, setPost] = useState({
@@ -8,17 +8,17 @@ const NewPostPopup = ({ onSave, onCancel }) => {
     content: '',
     warframe: '',
     tags: '',
-    image: '',
-  });
-  const { user } = useAuth();
+    image: ''
+  })
+  const { user } = useAuth()
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setPost((prev) => ({ ...prev, [name]: value }));
-  };
+    const { name, value } = e.target
+    setPost((prev) => ({ ...prev, [name]: value }))
+  }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
       await onSave({
         title: post.title,
@@ -26,13 +26,13 @@ const NewPostPopup = ({ onSave, onCancel }) => {
         warframe: post.warframe,
         tags: post.tags,
         image: post.image,
-        user_id: user.id,
-      });
-      onCancel();
+        user_id: user.id
+      })
+      onCancel()
     } catch (error) {
-      console.error('Failed to save the post:', error);
+      console.error('Failed to save the post:', error)
     }
-  };
+  }
 
   return (
     <Popup onClose={onCancel}>
@@ -51,7 +51,7 @@ const NewPostPopup = ({ onSave, onCancel }) => {
         <button type="submit">Create Post</button>
       </form>
     </Popup>
-  );
-};
+  )
+}
 
-export default NewPostPopup;
+export default NewPostPopup

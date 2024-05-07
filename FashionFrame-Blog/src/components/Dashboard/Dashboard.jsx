@@ -1,5 +1,5 @@
-import React from 'react';
-import '../../styles/Dashboard.css';
+import React from 'react'
+import '../../styles/Dashboard.css'
 
 const Dashboard = ({ onNewPost, onUpdatePosts, onDeletePosts }) => {
   return (
@@ -8,7 +8,7 @@ const Dashboard = ({ onNewPost, onUpdatePosts, onDeletePosts }) => {
       <button onClick={onUpdatePosts}>Update Posts</button>
       <button onClick={onDeletePosts}>Delete Posts</button>
     </div>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Dashboard

@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-function SocialMediaLinks() {
+function SocialMediaLinks () {
   return (
     <div className="wtfm_social">
       <h1 className="wtfm-title">Where to find me?</h1>
@@ -36,7 +36,7 @@ function SocialMediaLinks() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default SocialMediaLinks;
+export default SocialMediaLinks

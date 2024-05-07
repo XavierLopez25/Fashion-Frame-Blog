@@ -1,13 +1,13 @@
-import React from 'react';
-import '../../styles/LatestUpdate.css';
+import React from 'react'
+import '../../styles/LatestUpdate.css'
 
 const LatestUpdate = () => {
   const latestPost = {
     title: 'Exciting New Features',
     date: 'April 28, 2024',
     imageUrl: 'path/to/post-image.jpg',
-    tags: ['Update', 'Features', 'Announcement'],
-  };
+    tags: ['Update', 'Features', 'Announcement']
+  }
 
   return (
     <div className="latest-update">
@@ -29,7 +29,7 @@ const LatestUpdate = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default LatestUpdate;
+export default LatestUpdate

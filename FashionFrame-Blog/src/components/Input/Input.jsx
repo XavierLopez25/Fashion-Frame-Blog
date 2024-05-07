@@ -3,6 +3,6 @@ const Input = ({ type, placeholder, icon: Icon, value, onChange }) => (
     <input type={type} placeholder={placeholder} required value={value} onChange={onChange} />
     <Icon className="icon" />
   </div>
-);
+)
 
-export default Input;
+export default Input
