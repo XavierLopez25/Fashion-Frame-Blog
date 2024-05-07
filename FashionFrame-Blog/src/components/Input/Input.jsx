@@ -1,8 +1,12 @@
-const Input = ({ type, placeholder, icon: Icon, value, onChange }) => (
-  <div className="input-box">
-    <input type={type} placeholder={placeholder} required value={value} onChange={onChange} />
-    <Icon className="icon" />
-  </div>
-)
+import React from 'react';
 
-export default Input
+const Input = React.forwardRef(({ type, placeholder, icon: Icon, ...rest }, ref) => {
+  return (
+    <div className="input-box">
+      {Icon && <Icon className="icon" />}
+      <input type={type} placeholder={placeholder} ref={ref} {...rest} />
+    </div>
+  );
+});
+
+export default Input;
