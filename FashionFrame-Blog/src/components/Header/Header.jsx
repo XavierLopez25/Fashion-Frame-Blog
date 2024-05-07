@@ -45,7 +45,10 @@ const Header = ({ words, colors }) => {
         </div>
       </div>
       <div className="image-banner">
-        <img src="../../assets/banner.png" alt="Banner for Site" />
+        <img
+          src="https://www.onrpg.com/wp-content/uploads/2013/01/Warframe-Profile-Banner.png"
+          alt="Banner for Site"
+        />
       </div>
     </div>
   );

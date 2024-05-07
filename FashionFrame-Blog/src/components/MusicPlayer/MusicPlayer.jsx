@@ -144,7 +144,7 @@ const MusicPlayer = ({ volume }) => {
           <div className="mp-container">
             <div className="player-controls">
               <div className="music-image">
-                <img src="../../assets/DepthsIconImage.png" alt="Music Cover" />
+                <img src="https://i.postimg.cc/50KnpDjw/icon222222.png" alt="Music Cover" />
               </div>
               <div className="mselection-controls">
                 <CustomDropdown

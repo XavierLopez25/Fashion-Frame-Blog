@@ -180,7 +180,7 @@ const AdminPage = () => {
             additionalText="The making of this website had me feeling very upset, because of the deadline."
           />
           <ImageSlider />
-          <img src="../../assets/GetDagath'd.webp" className="getDagathd"></img>
+          <img src="https://i.postimg.cc/J09KCJN0/honse-jape.png" className="getDagathd"></img>
         </div>
       </div>
     </div>
