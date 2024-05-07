@@ -1,0 +1,34 @@
+.empty-container,
+.error-container,
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 300px;
+}
+
+.image-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-section img {
+  width: 800px;
+  height: auto;
+}
+
+.status-image {
+  width: 50%;
+  width: 300px;
+}
+
+.status-message {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 500;
+  color: #fff;
+}
