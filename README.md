@@ -4,12 +4,14 @@
 
 👋 Welcome to the **Fashion Frame Warframe** blog, a community-driven platform where fans can share and discuss their favorite Warframe fashion setups. This blog is built using **React + Vite** and offers dynamic content updates and user interaction.
 
+### Visit the Blog here!!  [Click me](https://fashion-frame-blog.vercel.app/home)
+
 ## Features 🚀
 
 - **Dynamic Posts** 📝: Browse through the latest submissions and see what's trending in the Warframe fashion world.
 - **User Role System** 🔑: Different levels of access and interaction based on user roles. Guests can view posts, while registered users can create, update, and delete their own posts.
-- **User Authentication** 🔒: Secure login system for users to access their profiles and interact with the blog. [Click here to login/register](https://fashion-frame-blog-ri09rneva-xavierlopez25s-projects-9e5c1572.vercel.app/login)
-- **Guest Viewing** 🌐: No need to create an account to explore the content. Guests can freely view all public posts. [Click here to see the guest view](https://fashion-frame-blog-ri09rneva-xavierlopez25s-projects-9e5c1572.vercel.app/home)
+- **User Authentication** 🔒: Secure login system for users to access their profiles and interact with the blog. [Feel free to join!](https://fashion-frame-blog.vercel.app/login)
+- **Guest Viewing** 🌐: No need to create an account to explore the content. Guests can freely view all public posts. [Click here to see the posts!](https://fashion-frame-blog.vercel.app/home)
 
 ## Technologies 🛠️
 
@@ -49,6 +51,10 @@ npm run dev
 ```
 
 4. Open `http://localhost:5173` in your browser to view the app.
+
+## API Source Code!
+
+Here's the API source code used for this blog [Click me](https://github.com/XavierLopez25/API-Fashion-Frame)
 
 ## Contributing 🤝
 
