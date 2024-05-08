@@ -1,6 +1,6 @@
 # 🌟 Fashion Frame Warframe Blog! 🌟
 
-![Alt Text](https://i.postimg.cc/W1FHdNW0/Fashion-Frame-Blog.png)
+![Alt Text](https://i.postimg.cc/j5KS1M32/HomePage.png)
 
 👋 Welcome to the **Fashion Frame Warframe** blog, a community-driven platform where fans can share and discuss their favorite Warframe fashion setups. This blog is built using **React + Vite** and offers dynamic content updates and user interaction.
 
@@ -23,6 +23,7 @@
 | useAuth Hook    | A custom hook for handling authentication.                    | [AuthContext](https://github.com/XavierLopez25/Fashion-Frame-Blog/blob/main/FashionFrame-Blog/src/hooks/AuthContext.jsx) |
 | JWT             | JSON Web Tokens for secure authentication.                    | [JWT Docs](https://jwt.io/introduction/)            |
 | React Router    | A library for navigation in React applications.               | [React Router Docs](https://reactrouter.com/)      |
+
 
 ## Motivation for Choosing These Technologies 💡
 
@@ -73,6 +74,16 @@ BG Image for the blog: **Pending**
 - Warframe community for continuous inspiration and support 🎮.
 - All contributors who help maintain and enhance this project.
 - To [Ina | Depths](https://twitter.com/everdepths) for inspiring the main color palette for the website 🐇.
+
+## Sreenshots 🗿
+
+![Home Page!](https://i.postimg.cc/j5KS1M32/HomePage.png)
+
+![Posts](https://i.postimg.cc/HsQHqw57/Posts.png)
+
+![About Me](https://i.postimg.cc/RFk58hZR/AboutMe.png)
+
+![Where To Find Me?](https://i.postimg.cc/fyYnhs3h/Where-To-Find-Me.png)
 
 ---
 
