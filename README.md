@@ -1,15 +1,17 @@
 # 🌟 Fashion Frame Warframe Blog! 🌟
 
-![Alt Text](https://i.postimg.cc/W1FHdNW0/Fashion-Frame-Blog.png)
+![Alt Text](https://i.postimg.cc/j5KS1M32/HomePage.png)
 
 👋 Welcome to the **Fashion Frame Warframe** blog, a community-driven platform where fans can share and discuss their favorite Warframe fashion setups. This blog is built using **React + Vite** and offers dynamic content updates and user interaction.
+
+### Visit the Blog here!!  [Click me](https://fashion-frame-blog.vercel.app/home)
 
 ## Features 🚀
 
 - **Dynamic Posts** 📝: Browse through the latest submissions and see what's trending in the Warframe fashion world.
 - **User Role System** 🔑: Different levels of access and interaction based on user roles. Guests can view posts, while registered users can create, update, and delete their own posts.
-- **User Authentication** 🔒: Secure login system for users to access their profiles and interact with the blog.
-- **Guest Viewing** 🌐: No need to create an account to explore the content. Guests can freely view all public posts.
+- **User Authentication** 🔒: Secure login system for users to access their profiles and interact with the blog. [Feel free to join!](https://fashion-frame-blog.vercel.app/login)
+- **Guest Viewing** 🌐: No need to create an account to explore the content. Guests can freely view all public posts. [Click here to see the posts!](https://fashion-frame-blog.vercel.app/home)
 
 ## Technologies 🛠️
 
@@ -21,6 +23,7 @@
 | useAuth Hook    | A custom hook for handling authentication.                    | [AuthContext](https://github.com/XavierLopez25/Fashion-Frame-Blog/blob/main/FashionFrame-Blog/src/hooks/AuthContext.jsx) |
 | JWT             | JSON Web Tokens for secure authentication.                    | [JWT Docs](https://jwt.io/introduction/)            |
 | React Router    | A library for navigation in React applications.               | [React Router Docs](https://reactrouter.com/)      |
+
 
 ## Motivation for Choosing These Technologies 💡
 
@@ -50,6 +53,10 @@ npm run dev
 
 4. Open `http://localhost:5173` in your browser to view the app.
 
+## API Source Code!
+
+Here's the API source code used for this blog [Click me](https://github.com/XavierLopez25/API-Fashion-Frame)
+
 ## Contributing 🤝
 
 Interested in contributing to the Fashion Frame Warframe blog? We welcome contributions of all forms. Please feel free to fork the repository and submit a pull request.
@@ -67,6 +74,16 @@ BG Image for the blog: **Pending**
 - Warframe community for continuous inspiration and support 🎮.
 - All contributors who help maintain and enhance this project.
 - To [Ina | Depths](https://twitter.com/everdepths) for inspiring the main color palette for the website 🐇.
+
+## Sreenshots 🗿
+
+![Home Page!](https://i.postimg.cc/j5KS1M32/HomePage.png)
+
+![Posts](https://i.postimg.cc/HsQHqw57/Posts.png)
+
+![About Me](https://i.postimg.cc/RFk58hZR/AboutMe.png)
+
+![Where To Find Me?](https://i.postimg.cc/fyYnhs3h/Where-To-Find-Me.png)
 
 ---
 
